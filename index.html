@@ -138,14 +138,22 @@ ul,ol{list-style:none}
 /* Offers */
 .offers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-8);margin-top:var(--space-10)}
 .offer-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-8);box-shadow:var(--shadow-md);transition:all var(--duration-base) var(--ease-out)}
-.offer-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
-.offer-card-header{display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-6);padding-bottom:var(--space-5);border-bottom:1px solid var(--color-border-light)}
-.offer-card-icon{width:48px;height:48px;border-radius:var(--radius-md);display:grid;place-items:center;font-size:22px}
+.offer-card:hover{box-shadow:var(--shadow-lg)}
+.offer-card-header{display:flex;align-items:center;gap:var(--space-4);padding-bottom:var(--space-5);border-bottom:1px solid transparent;cursor:pointer;user-select:none;transition:border-color var(--duration-base)}
+.offer-card.open .offer-card-header{border-bottom-color:var(--color-border-light);margin-bottom:var(--space-6)}
+.offer-card-header:hover{background:var(--color-primary-light);border-radius:var(--radius-lg);padding-left:var(--space-3);padding-right:var(--space-3);margin-left:calc(-1*var(--space-3));margin-right:calc(-1*var(--space-3))}
+.offer-card-icon{width:48px;height:48px;border-radius:var(--radius-md);display:grid;place-items:center;font-size:22px;flex-shrink:0}
 .offer-card-icon.teal{background:var(--color-primary-light)}
 .offer-card-icon.orange{background:var(--color-accent-light)}
 .offer-card-title{font-size:var(--text-xl);font-weight:800}
 .offer-card-total{font-size:var(--text-3xl);font-weight:900;color:var(--color-primary-dark);margin-left:auto}
+.offer-chevron{font-size:18px;color:var(--color-primary);margin-left:var(--space-3);transition:transform var(--duration-base) var(--ease-out);flex-shrink:0}
+.offer-card.open .offer-chevron{transform:rotate(180deg)}
+.offer-list-wrap{overflow:hidden;max-height:0;transition:max-height 0.45s var(--ease-out),opacity 0.3s ease;opacity:0}
+.offer-card.open .offer-list-wrap{max-height:600px;opacity:1}
 .offer-list{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}
+.offer-expand-hint{text-align:center;font-size:var(--text-xs);color:var(--color-text-tertiary);margin-top:var(--space-3);font-weight:500;transition:opacity var(--duration-base)}
+.offer-card.open .offer-expand-hint{opacity:0;height:0;margin:0;overflow:hidden}
 .offer-item{display:flex;justify-content:space-between;align-items:center;padding:var(--space-3) var(--space-4);background:var(--color-bg);border-radius:var(--radius-md);transition:background var(--duration-fast)}
 .offer-item:hover{background:var(--color-primary-light)}
 .offer-school{font-size:var(--text-sm);font-weight:600;color:var(--color-text)}
@@ -449,48 +457,56 @@ ul,ol{list-style:none}
       <p style="color:var(--color-text-secondary);font-size:var(--text-md);">硕士录取通知书共 <strong style="color:var(--color-primary-dark)">2357枚</strong>，博士录取通知书共 <strong style="color:var(--color-accent-dark)">345枚</strong></p>
     </div>
     <div class="offers-grid">
-      <div class="offer-card reveal reveal-delay-1">
-        <div class="offer-card-header">
+      <div class="offer-card reveal reveal-delay-1" id="offerMaster">
+        <div class="offer-card-header" onclick="toggleOffer('offerMaster')" role="button" aria-expanded="false" aria-controls="offerMasterList">
           <div class="offer-card-icon teal">🎓</div>
           <div>
             <div class="offer-card-title">硕士录取</div>
             <div style="font-size:var(--text-xs);color:var(--color-text-secondary);font-weight:600;">成功率 100%</div>
           </div>
           <div class="offer-card-total">2357枚</div>
+          <div class="offer-chevron">▾</div>
         </div>
-        <div class="offer-list">
-          <div class="offer-item"><span class="offer-school">新加坡国立大学</span><span class="offer-count">418枚</span></div>
-          <div class="offer-item"><span class="offer-school">南洋理工大学</span><span class="offer-count">523枚</span></div>
-          <div class="offer-item"><span class="offer-school">香港大学</span><span class="offer-count">184枚</span></div>
-          <div class="offer-item"><span class="offer-school">香港科技大学</span><span class="offer-count">129枚</span></div>
-          <div class="offer-item"><span class="offer-school">香港中文大学</span><span class="offer-count">138枚</span></div>
-          <div class="offer-item"><span class="offer-school">伦敦大学学院</span><span class="offer-count">296枚</span></div>
-          <div class="offer-item"><span class="offer-school">帝国理工学院</span><span class="offer-count">101枚</span></div>
-          <div class="offer-item"><span class="offer-school">牛津大学</span><span class="offer-count">23枚</span></div>
-          <div class="offer-item"><span class="offer-school">剑桥大学</span><span class="offer-count">36枚</span></div>
-          <div class="offer-item"><span class="offer-school">美国TOP30</span><span class="offer-count">120枚</span></div>
+        <div class="offer-expand-hint">点击展开院校明细 ↑</div>
+        <div class="offer-list-wrap" id="offerMasterList">
+          <div class="offer-list">
+            <div class="offer-item"><span class="offer-school">新加坡国立大学</span><span class="offer-count">418枚</span></div>
+            <div class="offer-item"><span class="offer-school">南洋理工大学</span><span class="offer-count">523枚</span></div>
+            <div class="offer-item"><span class="offer-school">香港大学</span><span class="offer-count">184枚</span></div>
+            <div class="offer-item"><span class="offer-school">香港科技大学</span><span class="offer-count">129枚</span></div>
+            <div class="offer-item"><span class="offer-school">香港中文大学</span><span class="offer-count">138枚</span></div>
+            <div class="offer-item"><span class="offer-school">伦敦大学学院</span><span class="offer-count">296枚</span></div>
+            <div class="offer-item"><span class="offer-school">帝国理工学院</span><span class="offer-count">101枚</span></div>
+            <div class="offer-item"><span class="offer-school">牛津大学</span><span class="offer-count">23枚</span></div>
+            <div class="offer-item"><span class="offer-school">剑桥大学</span><span class="offer-count">36枚</span></div>
+            <div class="offer-item"><span class="offer-school">美国TOP30</span><span class="offer-count">120枚</span></div>
+          </div>
         </div>
       </div>
-      <div class="offer-card reveal reveal-delay-2">
-        <div class="offer-card-header">
+      <div class="offer-card reveal reveal-delay-2" id="offerPhd">
+        <div class="offer-card-header" onclick="toggleOffer('offerPhd')" role="button" aria-expanded="false" aria-controls="offerPhdList">
           <div class="offer-card-icon orange">🔬</div>
           <div>
             <div class="offer-card-title">博士录取</div>
             <div style="font-size:var(--text-xs);color:var(--color-text-secondary);font-weight:600;">成功率 93%</div>
           </div>
           <div class="offer-card-total" style="color:var(--color-accent-dark);">345枚</div>
+          <div class="offer-chevron" style="color:var(--color-accent);">▾</div>
         </div>
-        <div class="offer-list">
-          <div class="offer-item"><span class="offer-school">新加坡国立大学</span><span class="offer-count orange">55枚</span></div>
-          <div class="offer-item"><span class="offer-school">南洋理工大学</span><span class="offer-count orange">68枚</span></div>
-          <div class="offer-item"><span class="offer-school">香港大学</span><span class="offer-count orange">34枚</span></div>
-          <div class="offer-item"><span class="offer-school">香港科技大学</span><span class="offer-count orange">29枚</span></div>
-          <div class="offer-item"><span class="offer-school">香港中文大学</span><span class="offer-count orange">27枚</span></div>
-          <div class="offer-item"><span class="offer-school">英国G5名校</span><span class="offer-count orange">28枚</span></div>
-          <div class="offer-item"><span class="offer-school">澳洲八大</span><span class="offer-count orange">32枚</span></div>
-          <div class="offer-item"><span class="offer-school">美国TOP30</span><span class="offer-count orange">20枚</span></div>
-          <div class="offer-item"><span class="offer-school">国内C9院校</span><span class="offer-count orange">29枚</span></div>
-          <div class="offer-item"><span class="offer-school">其他顶尖院校</span><span class="offer-count orange">23枚</span></div>
+        <div class="offer-expand-hint">点击展开院校明细 ↑</div>
+        <div class="offer-list-wrap" id="offerPhdList">
+          <div class="offer-list">
+            <div class="offer-item"><span class="offer-school">新加坡国立大学</span><span class="offer-count orange">55枚</span></div>
+            <div class="offer-item"><span class="offer-school">南洋理工大学</span><span class="offer-count orange">68枚</span></div>
+            <div class="offer-item"><span class="offer-school">香港大学</span><span class="offer-count orange">34枚</span></div>
+            <div class="offer-item"><span class="offer-school">香港科技大学</span><span class="offer-count orange">29枚</span></div>
+            <div class="offer-item"><span class="offer-school">香港中文大学</span><span class="offer-count orange">27枚</span></div>
+            <div class="offer-item"><span class="offer-school">英国G5名校</span><span class="offer-count orange">28枚</span></div>
+            <div class="offer-item"><span class="offer-school">澳洲八大</span><span class="offer-count orange">32枚</span></div>
+            <div class="offer-item"><span class="offer-school">美国TOP30</span><span class="offer-count orange">20枚</span></div>
+            <div class="offer-item"><span class="offer-school">国内C9院校</span><span class="offer-count orange">29枚</span></div>
+            <div class="offer-item"><span class="offer-school">其他顶尖院校</span><span class="offer-count orange">23枚</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -847,6 +863,14 @@ const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+function toggleOffer(cardId) {
+  const card = document.getElementById(cardId);
+  const header = card.querySelector('.offer-card-header');
+  const isOpen = card.classList.contains('open');
+  card.classList.toggle('open');
+  header.setAttribute('aria-expanded', !isOpen);
+}
 
 function switchTab(phaseId, btn) {
   document.querySelectorAll('.process-phase').forEach(p => p.classList.remove('active'));
