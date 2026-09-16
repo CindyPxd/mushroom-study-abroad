@@ -121,10 +121,10 @@ ul,ol{list-style:none}
 .btn-lg{padding:var(--space-4) var(--space-8);font-size:var(--text-lg)}
 
 /* About */
-.about-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:var(--space-16);align-items:center}
+.about-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--space-12);align-items:center}
 .about-text{color:var(--color-text-secondary);line-height:1.9;margin-bottom:var(--space-6);font-size:var(--text-md)}
 .about-text strong{color:var(--color-primary-dark);font-weight:700}
-.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-top:var(--space-8)}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-top:0}
 .highlight-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);transition:all var(--duration-base) var(--ease-out);position:relative;overflow:hidden}
 .highlight-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--color-primary);border-radius:0 2px 2px 0}
 .highlight-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
@@ -309,8 +309,7 @@ ul,ol{list-style:none}
   <div class="container">
     <nav class="nav-wrap">
       <a href="#" class="logo" id="logoLink">
-        <div class="logo-text">菜博士留学<span>·</span></div>
-        <div class="logo-badge">Offer Expert</div>
+        <img src="resource/logo.png" alt="菜博士留学 Offer Expert" style="height:42px;width:auto;display:block;">
       </a>
       <div class="nav-links">
         <a href="#about" id="navAbout">关于我们</a>
@@ -400,8 +399,8 @@ ul,ol{list-style:none}
       <div class="stat-label">🔬 博士Offer总数</div>
     </div>
     <div class="stat-item">
-      <span class="stat-value"><span class="acc">1.5</span><span class="stat-unit">亿</span></span>
-      <div class="stat-label">💰 累计奖学金（KEY DATA）</div>
+      <span class="stat-value">8000<span class="stat-unit">万+</span></span>
+      <div class="stat-label">💰 累计斩获奖学金</div>
     </div>
   </div>
 </div>
@@ -411,14 +410,16 @@ ul,ol{list-style:none}
     <div class="about-layout">
       <div>
         <span class="section-kicker reveal">公司简介</span>
-        <h2 class="section-title reveal reveal-delay-1">专业留学申请<br>从2019年开始</h2>
+        <h2 class="section-title reveal reveal-delay-1">专业留学申请<br>打破信息壁垒</h2>
         <p class="about-text reveal reveal-delay-2">
-          菜博士留学（Offer Expert）工作室于<strong>2019年创立</strong>，是一家诞生于新加坡的留学申请指导平台，由<strong>南洋理工前招生官蘑菇学姐</strong>创办，并联合海外TOP 50高校的硕士博士教授组成的研究型团队。
+          菜博士留学（Offer Expert）工作室于<strong>2019年创立于新加坡</strong>，由<strong>南洋理工前招生主管蘑菇学姐</strong>创办，联合海外TOP 50高校的硕士博士教授组成专业研究型团队。
         </p>
         <p class="about-text reveal reveal-delay-3">
-          真诚才是必杀技！我们希望做一群<strong>有温度的学长学姐</strong>，分享亲身留学申请经验，打破信息差。团队拥有<strong>200多位</strong>来自世界顶级名校的硕士博士教授，涵盖50+个专业领域。
+          我们坚持<strong>“真诚才是必杀技”</strong>的理念，做一群有温度的学长学姐，分享真实申请经验与招生内部视角，助力每一位师弟师妹圆梦名校。
         </p>
-        <div class="about-highlights reveal">
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="about-highlights">
           <div class="highlight-card">
             <div class="highlight-card-icon">🌏</div>
             <div class="highlight-card-title">立足新港英</div>
@@ -436,14 +437,10 @@ ul,ol{list-style:none}
           </div>
           <div class="highlight-card">
             <div class="highlight-card-icon">❤️</div>
-            <div class="highlight-card-title">有温度的服务</div>
-            <div class="highlight-card-sub">全程陪伴，异国他乡不迷茫</div>
+            <div class="highlight-card-title">全程陪伴服务</div>
+            <div class="highlight-card-sub">一站式辅导，异国他乡不迷茫</div>
           </div>
         </div>
-      </div>
-      <div class="about-image-side reveal">
-        <img src="resource/Image.jpeg" alt="菜博士留学 蘑菇学姐" class="about-poster">
-        <div class="about-tag-overlay">别让信息差，打破你的梦校</div>
       </div>
     </div>
   </div>
@@ -454,7 +451,7 @@ ul,ol{list-style:none}
     <div class="reveal">
       <span class="section-kicker">Offer战绩</span>
       <h2 class="section-title">实力说话，<br>数字见真章</h2>
-      <p style="color:var(--color-text-secondary);font-size:var(--text-md);">硕士录取通知书共 <strong style="color:var(--color-primary-dark)">2357枚</strong>，博士录取通知书共 <strong style="color:var(--color-accent-dark)">345枚</strong></p>
+      <p style="color:var(--color-text-secondary);font-size:var(--text-md);">真实录取战绩展示，点击卡片展开查看院校明细</p>
     </div>
     <div class="offers-grid">
       <div class="offer-card reveal reveal-delay-1" id="offerMaster">
@@ -550,20 +547,20 @@ ul,ol{list-style:none}
         <img src="resource/portrait.png" alt="蘑菇学姐" class="founder-photo" id="founderPhoto">
         <div class="founder-stat-cards">
           <div class="founder-stat-card">
-            <span class="founder-stat-val"><span class="acc">9</span>年</span>
-            <div class="founder-stat-lbl">留学辅导经验</div>
-          </div>
-          <div class="founder-stat-card">
-            <span class="founder-stat-val"><span class="acc">2000</span>+</span>
-            <div class="founder-stat-lbl">成功案例</div>
-          </div>
-          <div class="founder-stat-card">
-            <span class="founder-stat-val"><span class="acc">100</span>%</span>
-            <div class="founder-stat-lbl">硕士成功率</div>
+            <span class="founder-stat-val"><span class="acc">9</span>年+</span>
+            <div class="founder-stat-lbl">行业深耕</div>
           </div>
           <div class="founder-stat-card">
             <span class="founder-stat-val"><span class="acc">1000</span>+</span>
-            <div class="founder-stat-lbl">NTU参与案例</div>
+            <div class="founder-stat-lbl">NTU招生参与案例</div>
+          </div>
+          <div class="founder-stat-card">
+            <span class="founder-stat-val"><span class="acc">93</span>%</span>
+            <div class="founder-stat-lbl">博士录取成功率</div>
+          </div>
+          <div class="founder-stat-card">
+            <span class="founder-stat-val"><span class="acc">100</span>%</span>
+            <div class="founder-stat-lbl">真诚沟通服务</div>
           </div>
         </div>
       </div>
@@ -622,11 +619,11 @@ ul,ol{list-style:none}
     </div>
     <div class="team-grid">
       <div class="team-card reveal reveal-delay-1">
-        <div class="team-avatar">🍄</div>
-        <div class="team-name">蘑菇学姐</div>
-        <div class="team-univ">南洋理工大学 硕士 · NTU前招生主管</div>
-        <p class="team-desc">哈工大本科，NTU硕士，NTU前招生主管，从事留学行业7年+，助力上万名学弟学妹提供硕博留学申请规划。</p>
-        <div class="team-tags"><span class="team-tag">理工科</span><span class="team-tag">商科</span><span class="team-tag">人文社科</span><span class="team-tag">全方向</span></div>
+        <div class="team-avatar">🎓</div>
+        <div class="team-name">Vivian学姐</div>
+        <div class="team-univ">新加坡国立大学 博士 · 南洋理工 硕士</div>
+        <p class="team-desc">专注于新港顶尖名校理学与工学本硕博全流程规划，擅长科研亮点挖掘与文书学术提升。</p>
+        <div class="team-tags"><span class="team-tag">新加坡国立</span><span class="team-tag">南洋理工</span><span class="team-tag">理工科专精</span></div>
       </div>
       <div class="team-card reveal reveal-delay-2">
         <div class="team-avatar">⚡</div>
@@ -822,7 +819,7 @@ ul,ol{list-style:none}
 <section class="cta-section">
   <div class="container" style="position:relative;z-index:2;">
     <div class="reveal">
-      <div class="cta-slogan">别让信息差，<span>打破你的梦校</span></div>
+      <div class="cta-slogan">打破信息壁垒，<span>圆你名校之梦</span></div>
       <div class="cta-sub">立即联系蘑菇学姐，获取免费一对一咨询</div>
       <div class="cta-buttons">
         <a href="#contact" class="btn btn-primary btn-lg" id="ctaFinalBtn1">🎯 免费咨询</a>
